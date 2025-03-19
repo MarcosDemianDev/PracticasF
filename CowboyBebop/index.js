@@ -28,7 +28,7 @@ if (window.DeviceOrientationEvent) {
     window.addEventListener('deviceorientation', (e) => {
         const beta = e.beta;
         const gamma = e.gamma;
-        const maxTilt = 15;
+        const maxTilt = 25;
 
         rotationX = Math.max(Math.min(beta, maxTilt), -maxTilt);
         rotationY = Math.max(Math.min(gamma, maxTilt), -maxTilt);
