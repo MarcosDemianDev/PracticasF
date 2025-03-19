@@ -14,7 +14,7 @@ body {
     transform-style: preserve-3d;
     position: relative;
     display: flex;
-    width: 30%;
+    width: 90%;
     height: 95%;
     align-items: flex-end;
     justify-content: center;
@@ -86,4 +86,16 @@ body {
 .logo-dev {
   width: 50px;
   height: 50px;
+}
+
+@media only screen and (min-width:600px) {
+    .container {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width:1100px) {
+    .container {
+        width: 30%;
+    }
 }
