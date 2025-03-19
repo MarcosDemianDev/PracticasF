@@ -24,22 +24,41 @@ document.addEventListener('mousemove', (e) => {
     }
 });
 
+// Función para manejar el evento deviceorientation
+const handleOrientation = (e) => {
+    const beta = e.beta; // Inclinación frontal (eje X)
+    const gamma = e.gamma; // Inclinación lateral (eje Y)
+
+    // Ajustar la sensibilidad
+    const sensitivity = 0.5; // Puedes cambiar este valor para ajustar la sensibilidad
+    rotationX = Math.max(Math.min(beta * sensitivity, maxRotation), -maxRotation);
+    rotationY = Math.max(Math.min(gamma * sensitivity, maxRotation), -maxRotation);
+
+    // Aplicar la rotación al contenedor
+    container.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+};
+
+// Verificar si el dispositivo soporta deviceorientation
 if (window.DeviceOrientationEvent) {
-    window.addEventListener('deviceorientation', (e) => {
-        const beta = e.beta; // Inclinación frontal (eje X)
-        const gamma = e.gamma; // Inclinación lateral (eje Y)
-        const maxTilt = 25; // Máxima inclinación permitida
-
-        // Ajustar la sensibilidad
-        const sensitivity = 0.5; // Puedes cambiar este valor para ajustar la sensibilidad
-        rotationX = Math.max(Math.min(beta * sensitivity, maxTilt), -maxTilt);
-        rotationY = Math.max(Math.min(gamma * sensitivity, maxTilt), -maxTilt);
-
-        // Aplicar la rotación al contenedor
-        container.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
-    });
+    // Solicitar permisos para acceder a los sensores (en algunos navegadores)
+    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        DeviceOrientationEvent.requestPermission()
+            .then(permissionState => {
+                if (permissionState === 'granted') {
+                    window.addEventListener('deviceorientation', handleOrientation);
+                } else {
+                    console.log("Permisos denegados para acceder a los sensores.");
+                    alert("Permisos denegados para acceder a los sensores. El efecto 3D no funcionará.");
+                }
+            })
+            .catch(console.error);
+    } else {
+        // Navegadores que no requieren permisos explícitos
+        window.addEventListener('deviceorientation', handleOrientation);
+    }
 } else {
     console.log("Tu dispositivo no soporta el evento de orientación.");
+    alert("Tu dispositivo no soporta el evento de orientación. El efecto 3D no funcionará.");
 }
 
 const starsContainer = document.querySelector('.stars');
