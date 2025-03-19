@@ -26,13 +26,16 @@ document.addEventListener('mousemove', (e) => {
 
 if (window.DeviceOrientationEvent) {
     window.addEventListener('deviceorientation', (e) => {
-        const beta = e.beta;
-        const gamma = e.gamma;
-        const maxTilt = 25;
+        const beta = e.beta; // Inclinación frontal (eje X)
+        const gamma = e.gamma; // Inclinación lateral (eje Y)
+        const maxTilt = 25; // Máxima inclinación permitida
 
-        rotationX = Math.max(Math.min(beta, maxTilt), -maxTilt);
-        rotationY = Math.max(Math.min(gamma, maxTilt), -maxTilt);
+        // Ajustar la sensibilidad
+        const sensitivity = 0.5; // Puedes cambiar este valor para ajustar la sensibilidad
+        rotationX = Math.max(Math.min(beta * sensitivity, maxTilt), -maxTilt);
+        rotationY = Math.max(Math.min(gamma * sensitivity, maxTilt), -maxTilt);
 
+        // Aplicar la rotación al contenedor
         container.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
     });
 } else {
