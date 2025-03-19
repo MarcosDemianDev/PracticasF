@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    background-color: #00030e;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    position: relative;
+    display: flex;
+    width: 30%;
+    height: 95%;
+    align-items: flex-end;
+    justify-content: center;
+    user-select: none;
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    filter: brightness(.75) hue-rotate(40deg);
+    transform: translateZ(-10px);
+    box-shadow: 0px 0px 10px -3px rgb(0 26 123);
+}
+
+.img-3d {
+    width: auto;
+    position: absolute;
+    transition: transform 0.1s;
+}
+
+.title {
+   max-width: 30%;
+   top: 30%;
+}
+
+.cowboy {
+    height: 50%;
+    z-index: 100;
+    filter: drop-shadow(0px 0px 10px #000000) brightness(0.8) hue-rotate(10deg);
+}
+
+.stars {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%; 
+    z-index: 2;
+    overflow: hidden;
+    transform: translateZ(-5px);
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.logo-dev-container {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.logo-dev {
+  width: 50px;
+  height: 50px;
+}
