@@ -1,0 +1,53 @@
+* {
+    font-family: 'Raleway', sans-serif;
+}
+
+#canvas-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+}
+
+#prev-btn {
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+
+#next-btn {
+    border-left: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+
+#car-info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    color: white;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.404);
+    border-bottom: 1px solid #fff;
+    border-left: 1px solid #fff;
+    font-family: Arial, sans-serif;
+    max-width: 300px;
+}
+
+.titles {
+    border-bottom: .5px solid #fff;
+}

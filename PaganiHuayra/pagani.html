@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pagani Huayra 3D</title>
+    <link rel="icon" type="image/webp" href="assets/Pagani-Emblem-700x394.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <style> body { margin: 0; overflow: hidden; } </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Contenedor para el render 3D -->
+    <div id="canvas-container"></div>
+    
+    <!-- Botones y texto -->
+    <div class="controls">
+        <button id="prev-btn">Anterior</button>
+        <button id="next-btn">Siguiente</button>
+    </div>
+    <div id="car-info">
+        <h2 class="titles">"Pagani Huayra BC 16"</h2>
+        <p></p>
+    </div>
+
+    <!-- Three.js desde CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+    
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+</body>
+</html>
